@@ -1,0 +1,109 @@
+body{
+    margin: 0;
+    font-family: Ubuntu;
+
+}
+
+html,body,.contentContainer { height:100%; }
+
+
+.contentContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #00DFE1;
+}
+
+.calculatorBody{
+    margin-top: 100px;
+    margin-bottom: 100px;
+    background-image: linear-gradient(to right, #686868, #000);
+    max-width: 420px;
+    min-width: 420px;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    box-shadow: 30px 30px 40px 1px rgba(0, 0, 0, 0.2);
+    flex-direction: column;
+}
+
+
+
+
+
+.rowFour,
+.rowFive,
+.rowThree,
+.rowTwo,
+.rowOne{
+    display: flex; 
+
+   
+   gap: 15px;
+    margin-left: 28px;
+    margin-right: 28px;
+    margin-bottom: 15px;
+    
+ 
+
+}
+
+button{
+    border: none;
+    border-color: none;
+    border-radius: 20px;
+    min-width: 77px;
+    min-height: 66px;
+    background-image: linear-gradient(to right, #fff3d8, #faaf08);
+    font-family: Ubuntu;
+    font-size: 50px;
+    cursor: pointer;
+    outline: none;
+    box-shadow: none;
+  
+}
+
+button:hover{ 
+    background-image: linear-gradient(to right, #fff3d8, yellow);
+  }
+
+#ACBtn,#pwrBtn,#factorialBtn,#equalBtn,#subBtn,#divideBtn, #addBtn{
+    background-image: linear-gradient(to right, #e1ffff, #00dfe1);
+    
+    font-size: 40px;
+}
+
+#ACBtn:hover,#pwrBtn:hover,#factorialBtn:hover,#equalBtn:hover,#subBtn:hover,#divideBtn:hover, #addBtn:hover{
+    background-image: linear-gradient(to right, #e1ffff, yellow);
+  
+}
+
+
+#zeroBtn{
+    min-width: 169px;
+    min-height: 66px;
+}
+
+.output{
+    width: 360px;
+    min-width: 360px;
+    min-height: 116px;
+    background-image: linear-gradient(to right, #fff3d8, #faaf08);
+    display: flex;
+   margin-bottom: 15px;
+   border-radius: 20px;
+   font-family: Ubuntu;
+   font-size: 50px;
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+
+}
+
+.textContainer{
+    display: flex;
+    margin: 28px;
+}

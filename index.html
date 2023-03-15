@@ -4,59 +4,68 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&family=Ubuntu:wght@300;500;700&display=swap" rel="stylesheet">
     <title>Calculator</title>
 
 
 
 </head>
 <body>
-
+<div class="contentContainer">
 <div class="calculatorBody"> 
 
-    <div class="output">  </div>
+    <div class="output"> 
+        <div class="textContainer">    
+        666 
+    </div>
+    </div>
     <div class="rowOne">
-        <button>AC</button>
-        <button>xy</button>
-        <button>x!</button>
+        <button id="ACBtn">AC</button>
+        <button id="pwrBtn">x<sup>y</sup></button>
+        <button id="factorialBtn">x!</button>
 
-        <button>x</button>
+        <button id="factorialBtn">x</button>
 
     </div>
 
     <div class="rowTwo">
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
-        <button>/</button>
+        <button id="7Btn">7</button>
+        <button id="8Btn">8</button>
+        <button id="9Btn">9</button>
+        <button id="divideBtn">/</button>
         
     </div>
 
     <div class="rowThree">
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-        <button>+</button>
+        <button id="4Btn">4</button>
+        <button id="5Btn">5</button>
+        <button id="6Btn">6</button>
+        <button id="addBtn">+</button>
         
     </div>
 
     <div class="rowFour">
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>-</button>
+        <button id="1Btn">1</button>
+        <button id="2Btn">2</button>
+        <button id="3Btn">3</button>
+        <button id="subBtn">-</button>
         
     </div>
 
     <div class="rowFive">
         
-        <button>0</button>
-        <button>.</button>
-        <button>=</button>
+        <button id="zeroBtn">0</button>
+        <button id="dotBtn"><sup>.</sup></button>
+        <button id="equalBtn">=</button>
         
     </div>
 
 
 </div> 
+</div>
 
   <script src="script.js"></script>
   
