@@ -1,67 +1,76 @@
-
-
 let result = [];
 let Numbers = [];
+let Operators = [];
+
 // populating the display with the values
 const inputBtn = document.querySelectorAll('input');
 
-let hello;
 let i = 0;
 let inputArr = [];
 
-let numbersArr = [];
-let okarr = [];
-let tarpinis = []
-let z = 0;
-//console.log(inputArr)
-
 inputBtn.forEach(input => input.addEventListener('click', (e) => {
+  const paragraph = document. querySelector('p')
 
-//console.log(e.target.value)
-const paragraph = document. querySelector('p')
+  if (e.target.value == "xʸ"){
+    inputArr[i] = "^"; 
+  } if (e.target.value == "x!") {
+    inputArr[i] = "!"; 
+  } else {
+    inputArr[i] = e.target.value;
+  }
 
-
-inputArr[i] = e.target.value;
-//console.log(inputArr)
-
-paragraph.textContent = inputArr.join("");
-
-if(i>10){
-let slicedArray = inputArr.slice(i-10,i+1);
-//console.log(slicedArray)
-paragraph.textContent = slicedArray.join("");
-
-
-}
 
 
 //distinquish the numbers
-
-let string = inputArr.toString();
-hello =string.replace(/,/g, "")
-
-
-
-result = hello.replace('-',' +').replace('/',' +').split("+");
-
-k = 0;
-while(k<result.length){
-Numbers[k] = Number(result[k]);
-k++;
-}
-
-count = result[1];
-console.log(Numbers)
+  let charArr;
+  paragraph.textContent = inputArr.join("");
 
 
 
 
 
+
+  if(i>10){
+    let slicedArray = inputArr.slice(i-10,i+1);
+    paragraph.textContent = slicedArray.join("");
+  }
+
+  let string = inputArr.toString();
+  charArr =string.replace(/,/g, "")
+
+
+ //kad gauti skaiciu array visus skaicius pakeiciau pliusu ir tada splitinu turbut.bet antra karta paspaudus / neveikia
+  //result = charArr.replace('-','+').replace('/','+').split("+");
+  result = charArr.split(/[+-/x!^=]/)
+
+ 
+ console.log(charArr)
+
+
+
+ 
+  k = 0;
+  while(k<result.length){
+    Numbers[k] = Number(result[k]);
     
-i++;
 
+    k++;
+  }
 
+  console.log(Numbers);
+
+  i++;
 }))
+
+
+
+
+
+
+
+
+
+
 
 /*
 let arrayx =  [10, 12, 28];
@@ -123,6 +132,8 @@ console.log(val)
 
 
   /*
+
+
 
 
 let a;
