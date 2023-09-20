@@ -6,65 +6,123 @@ let Operators = [];
 const inputBtn = document.querySelectorAll('input');
 
 let i = 0;
+let k = 0;
 let inputArr = [];
 
 inputBtn.forEach(input => input.addEventListener('click', (e) => {
   const paragraph = document. querySelector('p')
 
-  if (e.target.value == "xʸ"){
-    inputArr[i] = "^"; 
-  } if (e.target.value == "x!") {
-    inputArr[i] = "!"; 
-  } else {
-    inputArr[i] = e.target.value;
+  if (e.target.value == "DEL"){
+  
+  } if (e.target.value == "AC") {
+    
+
+
+  } 
+  
+  
+  else {
+    inputArr[i] = e.target.value; 
+    let charArr;
+  paragraph.textContent = inputArr.join("");
+
+console.log(inputArr)
+
+
+  if(i>8){
+    let slicedArray = inputArr.slice(i-8,i+1);
+    paragraph.textContent = slicedArray.join("");
   }
+
+let string = inputArr.toString();
+  charArr =string.replace(/,/g, "")
+
+  
+  console.log(charArr);
+ 
+
+
+// SOMETHING WORKS
+
+
+  if(charArr.includes("+")) {
+
+
+  Numbers[0] = parseInt(charArr);
+  console.log(Numbers[0])
+ let lengthToCut = Numbers[0].toString().length;
+ console.log(lengthToCut)
+
+  
+ Numbers[1] = parseInt(charArr.slice(lengthToCut));    
+
+Operators[0] = "+"
+  
+
+  }
+    
+  console.log(Numbers[0]);
+  console.log(Operators[0]);
+  console.log(Numbers[1])
+
+
+
+  console.log(typeof Numbers[0]);
+  console.log(typeof Operators[0]);
+  console.log(typeof Numbers[1])
+  }
+
+  ////
+
+
+
 
 
 
 //distinquish the numbers
-  let charArr;
-  paragraph.textContent = inputArr.join("");
+ 
 
 
 
 
+//Get int from inputted Strings
 
 
-  if(i>10){
-    let slicedArray = inputArr.slice(i-10,i+1);
-    paragraph.textContent = slicedArray.join("");
-  }
 
-  let string = inputArr.toString();
-  charArr =string.replace(/,/g, "")
+ 
+
+
+
+  // let string = inputArr.toString();
+  // charArr =string.replace(/,/g, "")
 
 
  //kad gauti skaiciu array visus skaicius pakeiciau pliusu ir tada splitinu turbut.bet antra karta paspaudus / neveikia
   //result = charArr.replace('-','+').replace('/','+').split("+");
-  result = charArr.split(/[+-/x!^=]/)
+//   result = charArr.split(/[+-/x!^=]/)
 
  
- console.log(charArr)
+//  console.log(charArr)
 
 
 
  
-  k = 0;
-  while(k<result.length){
-    Numbers[k] = Number(result[k]);
+//   k = 0;
+//   while(k<result.length){
+//     Numbers[k] = Number(result[k]);
     
 
-    k++;
-  }
+//     k++;
+//   }
 
-  console.log(Numbers);
+//   console.log(Numbers);
 
   i++;
 }))
 
 
 
-
+ k++;
 
 
 
@@ -86,16 +144,16 @@ console.log(resultx);
 
 
 
-function Add(Numbers)
-{
+// function Add(Numbers)
+// {
 
-    let resultx = Numbers.reduce((x, y) => {
-        return x + y;
-      }, 0);
-      console.log(resultx);
-   // return Numbers.reduce((a, b) => a + b, 10)
+//     let resultx = Numbers.reduce((x, y) => {
+//         return x + y;
+//       }, 0);
+//       console.log(resultx);
+//    // return Numbers.reduce((a, b) => a + b, 10)
     
-}
+// }
 
   
 /*
