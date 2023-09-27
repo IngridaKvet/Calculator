@@ -1,6 +1,7 @@
 let result = [];
-let Numbers = [];
-let Operators = [];
+let Number1;
+let Number2;
+let Operator;
 
 // populating the display with the values
 const inputBtn = document.querySelectorAll('input');
@@ -45,84 +46,110 @@ let string = inputArr.toString();
 // SOMETHING WORKS
 
 
+Number1 = parseInt(charArr);
+console.log(Number1)
+let lengthToCut = Number1.toString().length+1;
+console.log(lengthToCut)
+
+
+Number2 = parseInt(charArr.slice(lengthToCut));   
+
   if(charArr.includes("+")) {
 
-
-  Numbers[0] = parseInt(charArr);
-  console.log(Numbers[0])
- let lengthToCut = Numbers[0].toString().length;
- console.log(lengthToCut)
-
-  
- Numbers[1] = parseInt(charArr.slice(lengthToCut));    
-
-Operators[0] = "+"
-  
+  Operator = "+"
 
   }
+
+  if(charArr.includes("/")) {
+
+    Operator = "/"
+  
+    }
+
+
+    if(charArr.includes("x")) {
+
+      Operator = "x"
     
-  console.log(Numbers[0]);
-  console.log(Operators[0]);
-  console.log(Numbers[1])
+      }
+
+
+  if(charArr.includes("-")) {
+
+    Operator = "-"
+  
+    }
+
+
+    
+  console.log(Number1);
+  console.log(Operator);
+  console.log(Number2)
 
 
 
-  console.log(typeof Numbers[0]);
-  console.log(typeof Operators[0]);
-  console.log(typeof Numbers[1])
+  console.log(typeof Number1);
+  console.log(typeof Operator);
+  console.log(typeof Number2)
   }
 
-  ////
+  //// 
+
+  if (e.target.value == "="){
+
+
+    if(Operator == "+"){
+
+    let HEL = Add(Number1,Number2);
+    const paragraph = document. querySelector('p')
+    paragraph.textContent = HEL;
+  console.log(HEL)
+    }
+
+
+    if(Operator == "-"){
+
+      let HEL = Substract(Number1,Number2);
+      const paragraph = document. querySelector('p')
+      paragraph.textContent = HEL;
+    console.log(HEL)
+      }
+
+      
+      if(Operator == "/"){
+
+        let HEL = Divide(Number1,Number2);
+        const paragraph = document. querySelector('p')
+        paragraph.textContent = HEL;
+      console.log(HEL)
+        }
+
+        
+        if(Operator == "x"){
+
+          let HEL = Multiply(Number1,Number2);
+          const paragraph = document. querySelector('p')
+          paragraph.textContent = HEL;
+        console.log(HEL)
+          }
+      
+
+  }
+
+
+  
 
 
 
 
 
 
-//distinquish the numbers
- 
-
-
-
-
-//Get int from inputted Strings
-
-
-
- 
-
-
-
-  // let string = inputArr.toString();
-  // charArr =string.replace(/,/g, "")
-
-
- //kad gauti skaiciu array visus skaicius pakeiciau pliusu ir tada splitinu turbut.bet antra karta paspaudus / neveikia
-  //result = charArr.replace('-','+').replace('/','+').split("+");
-//   result = charArr.split(/[+-/x!^=]/)
-
- 
-//  console.log(charArr)
-
-
-
- 
-//   k = 0;
-//   while(k<result.length){
-//     Numbers[k] = Number(result[k]);
-    
-
-//     k++;
-//   }
-
-//   console.log(Numbers);
 
   i++;
 }))
 
 
 
- k++;
 
 
 
@@ -130,123 +157,88 @@ Operators[0] = "+"
 
 
 
-/*
-let arrayx =  [10, 12, 28];
+function Add(Number1,Number2)
+{
+    return Number1+Number2;
+}
 
-let resultx = arrayx.reduce((x, y) => {
-  return x + y;
-}, 10);
+function Substract(Number1,Number2)
+{
+    return Number1-Number2;
+}
 
-console.log(resultx);
-*/
+function Multiply(Number1,Number2)
+{
+    return Number1*Number2;
+}
+
+function Divide(Number1,Number2)
+{
+    return Number1/Number2;
+}
 
 
 
 
-
-// function Add(Numbers)
-// {
-
-//     let resultx = Numbers.reduce((x, y) => {
-//         return x + y;
-//       }, 0);
-//       console.log(resultx);
-//    // return Numbers.reduce((a, b) => a + b, 10)
-    
-// }
 
   
-/*
-const outputText = document.querySelector('p');
-
-function updateButton(e) {
-    console.log("hi")
-    //let btn = document.querySelectorAll(".");
-    let val = e.target.value;
-    console.log(val)
-
-}
-
-    /*
-function updateButton() {
-    const val = this.document. querySelector('input'). value
-
-
-
-    const divPressed4 = (e) => {
-
-        let divColor = e.target.style.backgroundColor;
-//const val = document. querySelector('input'). value;
-console.log(val)
-
-    /*
-  if (button.value === 'Start machine') {
-    button.value = 'Stop machine';
-    paragraph.textContent = 'The machine has started!';
-  } else {
-    button.value = 'Start machine';
-    paragraph.textContent = 'The machine is stopped.';
-  }*/
-
-
-  /*
 
 
 
 
-let a;
-let b;
-function Add(a,b)
-{
-    return a+b;
-}
+// let a;
+// let b;
+// function Add(a,b)
+// {
+//     return a+b;
+// }
 
-function Substract(a,b)
-{
-    return a-b;
-}
-
-
-function Multiply(a,b)
-{
-    return a*b;
-}
-
-function Divide(a,b)
-{
-    return a/b;
-}
-
-function Power(a,b)
-{
-    return a**b;
-}
-
-function factorial(a,b)
-{
-    return a+b;
-}
-
-console.log(Add(5,3))
-
-function operate(num1, num2, operator)
-{
-   if(operator == '+'){
-
-console.log("OK")
-      return Add(num1, num2) 
-   } else if(operator == "-"){
-       return Substract(num1,num2)
-    } else if(operator == "/"){
-       return Divide(num1,num2)
-    } else if(operator == "*"){
-       return Multiply(num1,num2)
-    } else if(operator == "^"){
-        return Power(num1,num2)
-    }
+// function Substract(a,b)
+// {
+//     return a-b;
+// }
 
 
-}
+// function Multiply(a,b)
+// {
+//     return a*b;
+// }
 
-console.log(operate(1,2,"^"))
-*/
+// function Divide(a,b)
+// {
+//     return a/b;
+// }
+
+// function Power(a,b)
+// {
+//     return a**b;
+// }
+
+// function factorial(a,b)
+// {
+//     return a+b;
+// }
+
+// console.log(Add(5,3))
+
+// function operate(num1, num2, operator)
+// {
+//    if(operator == '+'){
+
+// console.log("OK")
+//       return Add(num1, num2) 
+//    } else if(operator == "-"){
+//        return Substract(num1,num2)
+//     } else if(operator == "/"){
+//        return Divide(num1,num2)
+//     } else if(operator == "*"){
+//        return Multiply(num1,num2)
+//     } else if(operator == "^"){
+//         return Power(num1,num2)
+//     }
+
+
+// }
+
+// console.log(operate(1,2,"^"))
+// */
