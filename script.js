@@ -10,8 +10,15 @@ let i = 0;
 let k = 0;
 let inputArr = [];
 
+
+
+
+  document.querySelector(".dotBtn").disabled = true;
+
+
+
 inputBtn.forEach(input => input.addEventListener('click', (e) => {
-  const paragraph = document. querySelector('p')
+  const paragraph = document.querySelector('p')
 
   if (e.target.value == "DEL"){
   
@@ -21,8 +28,14 @@ inputBtn.forEach(input => input.addEventListener('click', (e) => {
 
   } 
   
+
   
   else {
+
+
+
+
+
     inputArr[i] = e.target.value; 
     let charArr;
   paragraph.textContent = inputArr.join("");
@@ -43,21 +56,99 @@ let string = inputArr.toString();
  
 
 
-// SOMETHING WORKS
+// Differenciating Num1 and Num2 that can have decimal places
 
 
-Number1 = parseInt(charArr);
+
+
+Number1 = parseFloat(charArr);
 console.log(Number1)
 let lengthToCut = Number1.toString().length+1;
 console.log(lengthToCut)
 
 
-Number2 = parseInt(charArr.slice(lengthToCut));   
+Number2 = parseFloat(charArr.slice(lengthToCut));   
+console.log(Number2)
+
+
+if(Number1 != NaN){
+  document.querySelector(".dotBtn").disabled = false;
+  
+  if(charArr.toString().includes(".")){
+  document.querySelector(".dotBtn").disabled = true;
+} 
+
+if(charArr.includes("+")){
+  document.querySelector(".dotBtn").disabled = true;
+  if(Number2 >= 0){
+    document.querySelector(".dotBtn").disabled = false;
+    
+  }
+}
+if(charArr.slice(lengthToCut).toString().includes(".")){
+  document.querySelector(".dotBtn").disabled = true;
+}
+
+
+
+}
+
+/*
+if(Number1 != NaN){
+  document.querySelector(".dotBtn").disabled = false;
+
+}
+
+
+if(Number2 == 1){
+  document.querySelector(".dotBtn").disabled = true;
+}
+
+if(charArr.toString().includes(".")){
+  document.querySelector(".dotBtn").disabled = true;
+} 
+
+
+*/
+
+/*
+if(Number1 != NaN){
+  document.querySelector(".dotBtn").disabled = false;
+
+}
+
+console.log(Number1.toString())
+console.log(Number1.toString().includes("."))
+
+
+
+if(Number1.toString().includes(".")){
+  document.querySelector(".dotBtn").disabled = true;
+} else{
+  document.querySelector(".dotBtn").disabled = false;
+}
+
+
+
+if(charArr.includes("+")){
+  document.querySelector(".dotBtn").disabled = true;
+
+
+
+}
+*/
+
+
+
+
+////
 
   if(charArr.includes("+")) {
 
+  
+    console.log("hi")
   Operator = "+"
-
+ 
   }
 
   if(charArr.includes("/")) {
@@ -92,6 +183,10 @@ Number2 = parseInt(charArr.slice(lengthToCut));
   console.log(typeof Operator);
   console.log(typeof Number2)
   }
+
+
+
+
 
   //// 
 
