@@ -2,6 +2,7 @@ let result = [];
 let Number1;
 let Number2;
 let Operator;
+let currentValue = 0;
 
 // populating the display with the values
 const inputBtn = document.querySelectorAll('input');
@@ -16,10 +17,17 @@ disableOpBtn()
 inputBtn.forEach(input => input.addEventListener('click', (e) => {
   const paragraph = document.querySelector('p')
 
-  if (e.target.value == "DEL"){
+ console.log(currentValue)
   
-  } if (e.target.value == "AC") {
-
+  if (e.target.value == "DEL"){
+ 
+  } 
+  
+  if (e.target.value == "AC") {
+   paragraph.textContent = "";
+   currentValue = 0;
+   
+    console.log("hi")
   } 
   
 
@@ -37,17 +45,24 @@ inputBtn.forEach(input => input.addEventListener('click', (e) => {
     paragraph.textContent = slicedArray.join("");
   }
 
+
   let string = inputArr.toString();
   charArr =string.replace(/,/g, "");
 
-// Decimal places
+  console.log(charArr)
+
+// Getting Numbers
 
 Number1 = parseFloat(charArr);
-
 let lengthToCut = Number1.toString().length+1;
-Number2 = parseFloat(charArr.slice(lengthToCut));   
+Number2 = parseFloat(charArr.slice(lengthToCut));  
 
-if(Number1 != NaN){
+
+
+
+// Decimal places
+
+if(Number1 >= 0){
   document.querySelector(".dotBtn").disabled = false;
 
   if(charArr.toString().includes(".")){
@@ -75,7 +90,7 @@ if(charArr.slice(lengthToCut).includes(".")){
 }
 
 
-  }
+}
 
 
 // Assign operator
@@ -111,12 +126,16 @@ if (e.target.value == "x"){
       let OpResult = Add(Number1,Number2);
       const paragraph = document. querySelector('p');
       paragraph.textContent = OpResult;
+      currentValue = currentValue+OpResult;
+
+
     }
 
     if(Operator == "-"){
       let OpResult = Substract(Number1,Number2);
       const paragraph = document. querySelector('p')
       paragraph.textContent = OpResult;
+      
     }
   
     if(Operator == "/"){
@@ -171,19 +190,68 @@ function enableOpBtn(){
 
 
 function Add(Number1,Number2) {
-    return Number1+Number2;
+  let num1Digits = Number1.toString().split('').length;
+  let num2Digits = Number2.toString().split('').length;
+
+  let DigitMultiplier
+
+  if(num1Digits>num2Digits){
+    DigitMultiplier = num1Digits 
+  } else{
+    DigitMultiplier = num2Digits
+    };
+
+  let sum = Number(Math.round(Number1+Number2+'e'+DigitMultiplier)+'e-'+DigitMultiplier)
+  return sum; 
 }
 
-function Substract(Number1,Number2) {
-    return Number1-Number2;
+
+function Substract(Number1,Number2){
+  let num1Digits = Number1.toString().split('').length;
+  let num2Digits = Number2.toString().split('').length;
+
+  let DigitMultiplier
+
+  if(num1Digits>num2Digits){
+    DigitMultiplier = num1Digits 
+  } else{
+     DigitMultiplier = num2Digits
+    };
+
+  let diff = Number(Math.round(Number1-Number2+'e'+DigitMultiplier)+'e-'+DigitMultiplier)
+  return diff;
 }
 
 function Multiply(Number1,Number2) {
-    return Number1*Number2;
+  let num1Digits = Number1.toString().split('').length;
+  let num2Digits = Number2.toString().split('').length;
+
+  let DigitMultiplier
+
+  if(num1Digits>num2Digits){
+    DigitMultiplier = num1Digits 
+  } else{
+     DigitMultiplier = num2Digits
+    };
+
+  let product = Number(Math.round(Number1*Number2+'e'+DigitMultiplier)+'e-'+DigitMultiplier)
+  return product;
 }
 
 function Divide(Number1,Number2) {
-    return Number1/Number2;
+  let num1Digits = Number1.toString().split('').length;
+  let num2Digits = Number2.toString().split('').length;
+
+  let DigitMultiplier
+
+  if(num1Digits>num2Digits){
+    DigitMultiplier = num1Digits 
+  } else{
+     DigitMultiplier = num2Digits
+    };
+
+  let division = Number(Math.round(Number1/Number2+'e'+DigitMultiplier)+'e-'+DigitMultiplier)
+  return division;
 }
 
 
