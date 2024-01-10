@@ -19,24 +19,30 @@ inputBtn.forEach(input => input.addEventListener('click', (e) => {
 
  console.log(currentValue)
   
-  if (e.target.value == "DEL"){
- 
+  if (e.target.value == "AC"){
+    paragraph.textContent = "";
+    currentValue = 0;
+    inputArr = [];
   } 
   
-  if (e.target.value == "AC") {
-   paragraph.textContent = "";
-   currentValue = 0;
+  /*
+  else if (e.target.value == "DEL") {
+ 
+   //str.slice(0, -1);
+
+   paragraph.textContent = charArr.slice(0,-1);
    
     console.log("hi")
   } 
-  
+  */
 
   
-  else {
+  else if (e.target.value != "AC" && e.target.value != "DEL"){
 
   enableOpBtn()
 
   inputArr[i] = e.target.value; 
+
   let charArr;
   paragraph.textContent = inputArr.join("");
 
@@ -89,9 +95,19 @@ if(charArr.slice(lengthToCut).includes(".")){
   document.querySelector(".dotBtn").disabled = true;
 }
 
-
 }
 
+//DEL
+else if (e.target.value == "DEL") {
+  let stringToDisplay= inputArr.toString().replace(/,/g, "").slice(0,-1)
+  inputArr.pop();
+
+  paragraph.textContent = stringToDisplay;
+  
+  
+   console.log("hi")
+ } 
+ 
 
 // Assign operator
 
@@ -127,6 +143,9 @@ if (e.target.value == "x"){
       const paragraph = document. querySelector('p');
       paragraph.textContent = OpResult;
       currentValue = currentValue+OpResult;
+      inputArr = [];
+      inputArr[0] = OpResult;
+
 
 
     }
