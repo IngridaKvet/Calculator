@@ -1,3 +1,8 @@
+input[type=button]{
+    -webkit-appearance: none;
+    }
+
+
 body{
     margin: 0;
     font-family: Ubuntu;
@@ -103,6 +108,7 @@ html,body{
 input,button{
     border: none;
     border-color: none;
+    -webkit-border-radius: 50%;
     border-radius: 50%;
     min-width: 47px;
     min-height: 47px;
@@ -125,6 +131,7 @@ input,button{
 }
 
 .zeroBtn, .DELBtn{
+    -webkit-border-radius: 50px;
     border-radius: 50px;
 }
 
