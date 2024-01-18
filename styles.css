@@ -103,12 +103,13 @@ html,body{
 input,button{
     border: none;
     border-color: none;
-    border-radius: 50px;
+    border-radius: 50%;
     min-width: 47px;
     min-height: 47px;
     max-width: 47px;
     max-height: 47px;
     background-color: #F7057D;
+    color: #020509;
     font-family: Ubuntu;
     font-size: 25px;
     cursor: pointer;
@@ -122,6 +123,11 @@ input,button{
     background-color: #0ED5EA;
     font-size: 30px;
 }
+
+.zeroBtn, .DELBtn{
+    border-radius: 50px;
+}
+
 
 input:hover{ 
     background-color: #FAB213;
