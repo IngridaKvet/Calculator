@@ -3,140 +3,154 @@ let Number1;
 let Number2;
 let Operator;
 let currentValue = 0;
-
-// populating the display with the values
-const inputBtn = document.querySelectorAll('input');
-
 let i = 0;
 let k = 0;
 let inputArr = [];
 document.querySelector(".dotBtn").disabled = true;
-
+document.querySelector(".equalBtn").disabled = true;
 disableOpBtn()
 
-inputBtn.forEach(input => input.addEventListener('click', (e) => {
-  const paragraph = document.querySelector('p')
 
- console.log(currentValue)
-  
+
+
+
+
+const inputBtn = document.querySelectorAll('input');
+inputBtn.forEach(input => input.addEventListener('click', (e) => {
+const paragraph = document.querySelector('p')
+
+  if(paragraph.textContent == "Error"){
+    inputArr = [];
+  }
+
+
+
+
+
   if (e.target.value == "AC"){
     paragraph.textContent = "";
     currentValue = 0;
     inputArr = [];
   } 
   
-  /*
-  else if (e.target.value == "DEL") {
- 
-   //str.slice(0, -1);
-
-   paragraph.textContent = charArr.slice(0,-1);
-   
-    console.log("hi")
-  } 
-  */
-
   
   else if (e.target.value != "AC" && e.target.value != "DEL"){
-
-  enableOpBtn()
-
-  inputArr[i] = e.target.value; 
-
-  let charArr;
-  paragraph.textContent = inputArr.join("");
-
-  if(i>8){
-    let slicedArray = inputArr.slice(i-8,i+1);
-    paragraph.textContent = slicedArray.join("");
-  }
+    enableOpBtn()
+    inputArr[i] = e.target.value; 
 
 
-  let string = inputArr.toString();
-  charArr =string.replace(/,/g, "");
+    if(inputArr[i]!=0){
+      document.querySelector(".zeroBtn").disabled = false; 
+    } else if(inputArr[i]==0){
+        if(i == 0){
+          document.querySelector(".zeroBtn").disabled = true;   
+        } else{
+          document.querySelector(".zeroBtn").disabled = false;
+        }
 
-  console.log(charArr)
-
-// Getting Numbers
-
-Number1 = parseFloat(charArr);
-let lengthToCut = Number1.toString().length+1;
-Number2 = parseFloat(charArr.slice(lengthToCut));  
-
-
-
-
-// Decimal places
-
-if(Number1 >= 0){
-  document.querySelector(".dotBtn").disabled = false;
-
-  if(charArr.toString().includes(".")){
-  document.querySelector(".dotBtn").disabled = true;
-} 
+       
+    }
 
 
+    // Populate display with numbers
+    let charArr;
+    let stringToBeDisplayed;
 
-if(charArr.includes("+") ||charArr.includes("-") || charArr.includes("x") ||charArr.includes("/")  ){
-  document.querySelector(".dotBtn").disabled = true;
-  if(Number2 >= 0){
+    let string = inputArr.toString();
+    charArr =string.replace(/,/g, "");
+
+    stringToBeDisplayed = charArr;
+
+    if(stringToBeDisplayed.length>9){
+      paragraph.textContent = stringToBeDisplayed.slice((stringToBeDisplayed.length)-9);
+    } else{
+      paragraph.textContent = stringToBeDisplayed;
+    }
+
+    // Getting Numbers
+    Number1 = parseFloat(charArr);
+    let lengthToCut = Number1.toString().length+1;
+    Number2 = parseFloat(charArr.slice(lengthToCut));  
+
+    // Decimal places
+    if(Number1 >= 0){
     document.querySelector(".dotBtn").disabled = false;
-    
+    document.querySelector(".equalBtn").disabled = true;
+   
+
+      if(charArr.toString().includes(".")){
+        document.querySelector(".dotBtn").disabled = true;
+     } 
+
+      if(charArr.includes("+") ||charArr.includes("-") || charArr.includes("x") ||charArr.includes("/")  ){
+        document.querySelector(".dotBtn").disabled = true;
+       
+       if(Number2 >= 0){
+        document.querySelector(".dotBtn").disabled = false;
+        document.querySelector(".equalBtn").disabled = false;
+       }
+      }
+
+    }
+
+    if(Number2>=0){
+      disableOpBtn()
+    }
+
+    if(charArr.slice(lengthToCut).includes(".")){
+      document.querySelector(".dotBtn").disabled = true;
+    } 
   }
-}
 
-}
+  //DEL
+  else if (e.target.value == "DEL") {
 
-if(Number2>=0){
-  disableOpBtn()
-}
 
-if(charArr.slice(lengthToCut).includes(".")){
-  document.querySelector(".dotBtn").disabled = true;
-}
+    let stringToDisplay1= inputArr.toString().replace(/,/g, "").slice(0,-1)
+    inputArr.pop();
 
-}
 
-//DEL
-else if (e.target.value == "DEL") {
-  let stringToDisplay= inputArr.toString().replace(/,/g, "").slice(0,-1)
-  inputArr.pop();
-
-  paragraph.textContent = stringToDisplay;
-  
-  
-   console.log("hi")
- } 
+      if(stringToDisplay1.length>9){
+        paragraph.textContent = stringToDisplay1.slice((stringToDisplay1.length)-9);
+      } else{
+       paragraph.textContent = stringToDisplay1;
+      }
+  } 
  
 
-// Assign operator
-
-if (e.target.value == "+"){
-  Operator = "+";
-  disableOpBtn();
-}
-
-if (e.target.value == "/"){
-  Operator = "/";
-  disableOpBtn();
-}
-
-if (e.target.value == "-"){
-  Operator = "-";
-  disableOpBtn();
-}
-
-if (e.target.value == "x"){
-  Operator = "x";
-  disableOpBtn();
-}
 
 
-// Do operations 
 
+
+
+  // Assign operator
+
+  if (e.target.value == "+"){
+    Operator = "+";
+    disableOpBtn();
+
+  }
+
+  if (e.target.value == "/"){
+    Operator = "/";
+    disableOpBtn();
+  }
+
+  if (e.target.value == "-"){
+    Operator = "-";
+    disableOpBtn();
+  }
+
+  if (e.target.value == "x"){
+    Operator = "x";
+    disableOpBtn();
+  } 
+
+
+  // Do operations 
   if (e.target.value == "="){
 
-    
+    document.querySelector(".equalBtn").disabled = true;
 
     if(Operator == "+"){
       let OpResult = Add(Number1,Number2);
@@ -145,15 +159,15 @@ if (e.target.value == "x"){
       currentValue = currentValue+OpResult;
       inputArr = [];
       inputArr[0] = OpResult;
-
-
-
     }
 
     if(Operator == "-"){
       let OpResult = Substract(Number1,Number2);
       const paragraph = document. querySelector('p')
       paragraph.textContent = OpResult;
+      currentValue = currentValue+OpResult;
+      inputArr = [];
+      inputArr[0] = OpResult;
       
     }
   
@@ -161,26 +175,22 @@ if (e.target.value == "x"){
       let OpResult = Divide(Number1,Number2);
       const paragraph = document. querySelector('p')
       paragraph.textContent = OpResult;
+      currentValue = currentValue+OpResult;
+      inputArr = [];
+      inputArr[0] = OpResult;
     }
     
     if(Operator == "x"){
       let OpResult = Multiply(Number1,Number2);
       const paragraph = document. querySelector('p')
-      paragraph.textContent = OpResult;  
+      paragraph.textContent = OpResult;
+      currentValue = currentValue+OpResult;
+      inputArr = [];
+      inputArr[0] = OpResult;
     }
 
     enableOpBtn()
-    
   }
-
-
-  
-
-
-
-
-
-
 
   i++;
 }))
@@ -258,6 +268,9 @@ function Multiply(Number1,Number2) {
 }
 
 function Divide(Number1,Number2) {
+
+
+
   let num1Digits = Number1.toString().split('').length;
   let num2Digits = Number2.toString().split('').length;
 
@@ -269,7 +282,15 @@ function Divide(Number1,Number2) {
      DigitMultiplier = num2Digits
     };
 
-  let division = Number(Math.round(Number1/Number2+'e'+DigitMultiplier)+'e-'+DigitMultiplier)
+  let division = Number(Math.round(Number1/Number2+'e'+DigitMultiplier)+'e-'+DigitMultiplier);
+
+  if(Number2 == 0){
+    division = "Error";
+  }
+
+
+
+
   return division;
 }
 
