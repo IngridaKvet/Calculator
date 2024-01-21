@@ -15,6 +15,7 @@ disableOpBtn()
 
 
 
+
 const inputBtn = document.querySelectorAll('input');
 inputBtn.forEach(input => input.addEventListener('click', (e) => {
 const paragraph = document.querySelector('p')
@@ -72,29 +73,49 @@ const paragraph = document.querySelector('p')
     let lengthToCut = Number1.toString().length+1;
     Number2 = parseFloat(charArr.slice(lengthToCut));  
 
-    // Decimal places
-    if(Number1 >= 0){
+    console.log(typeof(charArr))
+
+    let operator1 = String((charArr.slice(lengthToCut-1).slice(0, -1)));
+
+
+
+//getting operator not by event WORKS
+
+console.log(charArr)
+console.log("num1 "+Number1)
+console.log("num1 "+Number2)
+console.log("num3 "+operator1)
+
+
+
+    // Decimal places and negative numbers
+if(charArr[0]=="-"){
+  document.querySelector(".subBtn").disabled = true;
+  disableOpBtn();
+
+}
+
+
+
+if(typeof Number1==='number' && !isNaN(Number1)){
     document.querySelector(".dotBtn").disabled = false;
     document.querySelector(".equalBtn").disabled = true;
+    document.querySelector(".subBtn").disabled = false;
+    console.log("hooooo")
+    enableOpBtn();
    
 
       if(charArr.toString().includes(".")){
         document.querySelector(".dotBtn").disabled = true;
      } 
 
-      if(charArr.includes("+") ||charArr.includes("-") || charArr.includes("x") ||charArr.includes("/")  ){
-        document.querySelector(".dotBtn").disabled = true;
-       
-       if(Number2 >= 0){
-        document.querySelector(".dotBtn").disabled = false;
-        document.querySelector(".equalBtn").disabled = false;
-       }
-      }
-
     }
 
-    if(Number2>=0){
-      disableOpBtn()
+    if(typeof Number2==='number' && !isNaN(Number2)){
+      disableOpBtn();
+      document.querySelector(".equalBtn").disabled = false;
+      document.querySelector(".dotBtn").disabled = false;
+      document.querySelector(".subBtn").disabled = true;
     }
 
     if(charArr.slice(lengthToCut).includes(".")){
@@ -120,6 +141,14 @@ const paragraph = document.querySelector('p')
 
 
 
+/*
+Number1 = parseFloat(charArr);
+let lengthToCut = Number1.toString().length+1;
+Number2 = parseFloat(charArr.slice(lengthToCut));  
+
+
+*/
+
 
 
 
@@ -128,22 +157,29 @@ const paragraph = document.querySelector('p')
   if (e.target.value == "+"){
     Operator = "+";
     disableOpBtn();
+    //document.querySelector(".subBtn").disabled = true;
 
   }
 
   if (e.target.value == "/"){
     Operator = "/";
     disableOpBtn();
+    //document.querySelector(".subBtn").disabled = true;
   }
 
   if (e.target.value == "-"){
     Operator = "-";
     disableOpBtn();
+//document.querySelector(".subBtn").disabled = true;
   }
 
   if (e.target.value == "x"){
     Operator = "x";
     disableOpBtn();
+
+    console.log(Number1)
+    console.log(Number2)
+   // document.querySelector(".subBtn").disabled = false;
   } 
 
 
@@ -190,6 +226,7 @@ const paragraph = document.querySelector('p')
     }
 
     enableOpBtn()
+    document.querySelector(".subBtn").disabled = false;
   }
 
   i++;
