@@ -4,7 +4,8 @@ let Number2;
 let operator;
 let currentValue = 0;
 let i = 0;
-let inputArr = [];
+let inputArr = []; 
+ let numberofminus = 0;
 document.querySelector(".dotBtn").disabled = true;
 document.querySelector(".equalBtn").disabled = true;
 disableOpBtn()
@@ -13,6 +14,9 @@ disableOpBtn()
 const inputBtn = document.querySelectorAll('input');
 inputBtn.forEach(input => input.addEventListener('click', (e) => {
 const paragraph = document.querySelector('p')
+
+
+
 
   if(paragraph.textContent == "Error"){
     inputArr = [];
@@ -25,7 +29,7 @@ const paragraph = document.querySelector('p')
   } 
   
   else if (e.target.value != "AC" && e.target.value != "DEL"){
-    enableOpBtn()
+    //enableOpBtn()
     inputArr[i] = e.target.value; 
 
     if(inputArr[i]!=0){
@@ -58,31 +62,37 @@ const paragraph = document.querySelector('p')
     let lengthToCut = Number1.toString().length+1;
     Number2 = parseFloat(charArr.slice(lengthToCut));  
 
+   
+
     operator = String((charArr.slice(lengthToCut-1).slice(0, -2)));
 
-  
+
 
     if(operator.length>1){
+
+console.log("heo")
       operator = operator.slice(0,-1);
     }
 
-//???????
+/*
     if(e.target.value == "-" && charArr.slice(-2) == "--"){
       console.log("hi")
       disableOpBtn();
     }
+*/
 
 
 
 
     // Decimal places and negative numbers
-    if(charArr[0]=="-"){
+
+    
+   if(charArr[0]=="-"){
       document.querySelector(".subBtn").disabled = true;
       disableOpBtn();
     }
 
-
-
+  
     if(typeof Number1==='number' && !isNaN(Number1)){
       document.querySelector(".dotBtn").disabled = false;
       document.querySelector(".equalBtn").disabled = true;
@@ -105,6 +115,18 @@ const paragraph = document.querySelector('p')
     if(charArr.slice(lengthToCut).includes(".")){
       document.querySelector(".dotBtn").disabled = true;
     } 
+
+
+
+    
+
+    
+ if(charArr[2]=="-" && charArr[3]=="-"){
+        document.querySelector(".subBtn").disabled = true;
+        disableOpBtn();
+      }
+      
+
   }
 
   //DEL
@@ -175,6 +197,10 @@ const paragraph = document.querySelector('p')
     enableOpBtn()
     document.querySelector(".subBtn").disabled = false;
   }
+
+
+
+  
 
   i++;
 }))
