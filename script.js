@@ -76,6 +76,7 @@ const paragraph = document.querySelector('p')
         disableOpBtn()
       }
 
+  
       if(number1String.includes(".")){
         document.querySelector(".dotBtn").disabled = true;
       }
@@ -102,6 +103,9 @@ const paragraph = document.querySelector('p')
       }
     }
 
+    if(charArr.endsWith("-" || "+" || "/" || "x")){
+      document.querySelector(".dotBtn").disabled = true;
+    }
 
     // Do calculations
     if (e.target.value == "="){
@@ -111,8 +115,18 @@ const paragraph = document.querySelector('p')
       let opResult = calculate(operatorString, number1Numeric, number2Numeric);
 
       const paragraph = document. querySelector('p');
-      paragraph.textContent = opResult;
+     
       inputArr = [];
+
+
+
+      if(opResult.length>9){
+        paragraph.textContent = opResult.slice((opResult.length)-9);
+        console.log("tooolomg")
+      } else{
+        paragraph.textContent = opResult;
+      }
+
 
       if(opResult == 0){
         inputArr = []
